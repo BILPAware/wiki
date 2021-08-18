@@ -1,0 +1,78 @@
+site_name: S2I MkDocs Example
+site_description: S2I MkDocs Example
+site_author: CERN Authoring
+site_url: https://s2i-mkdocs-example.docs.cern.ch/
+
+repo_name: GitLab
+repo_url: https://gitlab.cern.ch/authoring/documentation/s2i-mkdocs-example
+edit_uri: 'blob/master/docs'
+
+theme:
+  name: material
+
+markdown_extensions:
+  - attr_list
+
+extra:
+  alternate:
+    - name: English
+      link: ./
+      lang: en
+    - name: Français
+      link: ./fr/
+      lang: fr
+    - name: Galego
+      link: ./gl/
+      lang: gl
+
+plugins:
+  - search
+  - i18n:
+      default_language: en
+      languages:
+        en: english
+        fr: français
+        gl: galego
+      nav_translations:
+        en:
+          Chapter1: Chapter 1
+          Subchapter1: Chapter 1.1
+          Subchapter1a: Chapter 1.1.1
+          Chapter2: Chapter 2
+          Interesting links: Links to resources
+        fr:
+          Chapter1: Chapitre 1
+          Subchapter1: Chapitre 1.1
+          Subchapter1a: Chapitre 1.1.1
+          Chapter2: Chapitre 2
+          Interesting links: Liens vers des ressources
+        gl:
+          Chapter1: Capítulo 1
+          Subchapter1: Capítulo 1.1
+          Subchapter1a: Capítulo 1.1.1
+          Chapter2: Capítulo 2
+          Interesting links: Links a fontes
+
+# # [Legacy] If you want to use only one language for your documentation
+# # and you don't want to configure it through the i18n plugin
+# # you can still use the legacy configuration settings to do it
+# # using the nav property as follows:
+
+# nav:
+#     - Introduction: index.md
+#     - 'Chapter 1':
+#       - 'Chapter 1': chapter1/file.en.md
+#       - 'Chapter 1.1':
+#         - 'Chapter 1.1': chapter1/subchapter1/subfile.en.md
+#         - 'Chapter 1.1.1':
+#           - 'Chapter 1.1.1': chapter1/subchapter1/subchapter1a/file1a.en.md
+#           - 'Chapter 1.1.2': chapter1/subchapter1/subchapter1a/filewithimage.en.md
+#     - 'Chapter 2': chapter2/index.en.md
+#     - 'Interesting links': interesting_links/index.en.md
+#     - 'MkDocs official documentation': https://www.mkdocs.org/
+
+# # Notice that in this case, and since your documentation is not using
+# # i18n plugin, you don't have to follow the convection filename.<language>.md
+# # for your files. This is only required for using the i18n plugin. In addition,
+# # for those users who want to use this configuration setting,
+# # at least a file index.md is mandatory, so it has to be added or be renamed the current index.en.md.
