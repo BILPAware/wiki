@@ -18,6 +18,12 @@ plugins:
 nav:
     - Welcome: index.md
     - 'Official Page': http://www.ep.ph.bham.ac.uk/general/SiliconLab/index.html
+    - 'Starter Guides':
+      - 'ATLAS' : guides/atlas.md
+      - 'Computing' : guides/computing.md
+      - 'Electronics' : guides/electronics.md
+      - 'Particle Physics' : guides/pp.md
+      - 'Silicon Detectors' : guides/silicon.md
     - 'ITk Strips':
       - 'Cold Jig':
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
