@@ -24,6 +24,8 @@ nav:
       - 'Electronics' : guides/electronics.md
       - 'Particle Physics' : guides/pp.md
       - 'Silicon Detectors' : guides/silicon.md
+    - 'Monitoring' :
+      - 'InfluxDB + GrafAna' : monitoring/influx.md
     - 'ITk Strips':
       - 'Cold Jig':
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
