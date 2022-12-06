@@ -1,1 +1,1 @@
-The contents of this repository are published at [http://bilpa.wiki.cern.ch](http://bilpa.wiki.cern.ch).
+The contents of this repository are published at [http://bilpa.docs.cern.ch](http://bilpa.docs.cern.ch).
