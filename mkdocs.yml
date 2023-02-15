@@ -28,6 +28,8 @@ nav:
       - 'Shutdown' : procedures/shutdown.md
     - 'Monitoring' :
       - 'InfluxDB + GrafAna' : monitoring/influx.md
+    - 'MC40 Irradiation Facility':
+      - 'Documentation' : mc40/docs.md
     - 'ITk Strips':
       - 'Cold Jig':
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
