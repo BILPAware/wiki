@@ -19,7 +19,8 @@ The official repositories are under the
 [ColdJigDCS group](https://gitlab.cern.ch/ColdJigDCS).
 
 The forks are under [kkrizka](https://gitlab.cern.ch/kkrizka), with packages
-published to []().
+published to
+`https://gitlab.cern.ch/api/v4/projects/144235/packages/pypi/simple`.
 
 # Installation
 
@@ -41,4 +42,20 @@ will mainly create a `Pipfile` where you can add the external repositories.
 pipenv shell
 ```
 
-Open the `Pipfile` and 
+Open the `Pipfile` and add the following to register the custom index with the
+coldjig packages.
+
+```
+[[source]]
+name = "ColdJigDCS"
+url = "https://gitlab.cern.ch/api/v4/projects/144235/packages/pypi/simple"
+verify_ssl = true
+```
+
+Install the packages. The two main ones are `coldjiglib2` (library for control
+of the coldjig) and `coldbox-controller-webgui` (web interface). The `uk` option
+install packages specific to the UK hardware.
+
+```shell
+pipenv install 'coldjiglib2[uk]' coldbox-controller-webgui --index=ColdJigDCS
+```
