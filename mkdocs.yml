@@ -32,4 +32,6 @@ nav:
       - 'Documentation' : mc40/docs.md
     - 'ITk Strips':
       - 'Cold Jig':
+          - 'Local Instructions' : itkstrips/coldjig/local.md
+          - 'Software Installation' : itkstrips/coldjig/software.md
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
