@@ -4,7 +4,8 @@ This guide is for individuals working on developing the coldjig software. For
 production testing, there is a common and stable setup that should be used
 instead.
 
-# Repositories
+# Web Interface
+## Repositories
 
 The developement workflow is based on a branch of the official source code. The 
 branch includes changes that follow a more typical python flow, namely implement
@@ -22,7 +23,7 @@ The forks are under [kkrizka](https://gitlab.cern.ch/kkrizka), with packages
 published to
 `https://gitlab.cern.ch/api/v4/projects/144235/packages/pypi/simple`.
 
-# Installation
+## Your Directory
 
 Read through the [local instructions](local.md) to understand how to access the
 system.
@@ -34,6 +35,8 @@ is due to the common username. In this case, the example will be `~/mydevel`.
 mkdir ~/mydevel
 cd ~/mydevel
 ```
+
+## Installation
 
 Create a virtual environment for the packages using `pipenv` and activate it. It
 will mainly create a `Pipfile` where you can add the external repositories.
@@ -58,4 +61,24 @@ install packages specific to the UK hardware.
 
 ```shell
 pipenv install 'coldjiglib2[uk]' coldbox-controller-webgui --index=ColdJigDCS
+```
+
+## Package Developement
+Make a clone of the package you want to develop and switch to the `setuppy`
+branch. Make sure to use the https repository URL as this is a shared account.
+Then install the package in editable mode.
+
+For example,
+```shell
+git clone --branch setuppy https://gitlab.cern.ch/kkrizka/coldjiglib2.git
+pipenv install -e coldjiglib2/
+```
+
+## Starting the Web Interface
+A downside of the editable install is that the default configurations are not
+installed. Instead use the copy under `/home/pi/config/config.conf`. If you need
+to edit it, make a copy of this directory.
+
+```shell
+pipenv run coldbox_controller_webgui.py -c /home/pi/config/config.conf -v
 ```
