@@ -30,10 +30,13 @@ system.
 
 The following commands should be run in your own directory on `eplpl004`. This
 is due to the common username. In this case, the example will be `~/mydevel`.
+The log directories are not created by default and the GUI will crash if they
+do not exist.
 
 ```shell
 mkdir ~/mydevel
 cd ~/mydevel
+mkdir log && mkdir log/webserver
 ```
 
 ## Installation
@@ -76,9 +79,13 @@ pipenv install -e coldjiglib2/
 
 ## Starting the Web Interface
 A downside of the editable install is that the default configurations are not
-installed. Instead use the copy under `/home/pi/config/config.conf`. If you need
+installed. Instead use the copy under `/home/pi/configs/config.conf`. If you need
 to edit it, make a copy of this directory.
 
 ```shell
-pipenv run coldbox_controller_webgui.py -c /home/pi/config/config.conf -v
+pipenv run coldbox_controller_webgui.py -c /home/pi/configs/config.conf -v
 ```
+
+Note that you need to foward the port `5005` to access the web interface on your
+computer. See the [local instructions](local.md) for more information. This only
+needs to be done once per computer and `epldt116` is most likely already setup.
