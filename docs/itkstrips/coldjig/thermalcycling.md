@@ -18,84 +18,13 @@ Opening the lid will bring the lab air (~50% RH) into the box, with a rough dew 
 
 The power supplies should also be off when disconnecting modules. **Always ramp down HV!** Don't just turn it off.
 
-- [ ] Chiller is set to 20C or turned off.
-- [ ] Peltiers are set in IDLE mode.
-- [ ] Low and High Voltage power supplies are turned off.
-
-# Starting Testing Software
-
-The testing software consists of three parts:
-
-- The Cold Box GUI accessible via browser at [http://localhost:5000](http://localhost:5000) on the testing computer.
-- The ITSDAQ controller that receives commands from the GUI to run tests.
-- The ITSDAQ controller (ITSDCS) that receives commands to monitor Powerboards and control power supplies.
-
-## Cold Box GUI
-The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). The GUI is accessible only from the test building network at [http://epldt033.ph.bham.ac.uk:3000](http://epldt033.ph.bham.ac.uk:5000).
-
-If and only if the GUI is not running (ie: [http://localhost:5000](http://localhost:5000) is not accessible), it can be started by running the following on the `eplpl004` machine (`ssh pi@eplpl004` from the testing computer).
-
-```shell
-cd ~kkrizka/run
-source ../venv/bin/activate
-coldbox_controller_webgui.py -c configs/config.ini
-```
-
-Then navigate to the GUI and click the green "Start" button. In about 10-20 seconds, data should start appearing in GrafAna.
-
-### Shutting Down The GUI
-The GUI should be running 24/7 and not turned off. However in case you need to stop it, there are two options:
-
-- Use the red "Shutdown" button. This will stop the thread and the GUI.
-- `kill $(ps ax | grep coldbox_controller_webgui.py | awk "{print $1}")` on the `eplpl004` command line.
-
-Doing `Ctrl+C` to the process will not stop it due to a bug in thread management.
-
-## ITSDAQ Control
-The ITSDAQ is controlled using a special macro that queries the InfluxDB for commands. This should be restarted at the beginning of each thermal cycle. It ensures that each thermal cycle has its down run number in the data file. Also the ITSDAQ config needs to be manually editted for each module configuration.
-
-The ITSDAQ control can be started on the testing computer by:
-
-```shell
-cd ColdBox/itsdaq-sw
-source ../setup.sh
-./INFLUX_DAQ.sh
-```
-
-To shutdown ITSDAQ control, use `Ctrl+C`.
-
-### ITSDAQ Configuration
-The ITSDAQ configurations are stored inside `~/ColdBox/data`. There are different directories for different setups:
-
-- `testing`: Setup for production modules. (default)
-- `training`: Setup for prototype (v0 chipset) modules.
-
-The configuration can be specified as an argument to the `setup.sh` script. If not specified, `testing` is assumed. For example, to use the `training` configuration:
-```shell
-source ~/ColdBox/setup.sh training
-```
-
-## Powerboard and Power Supply Control
-The Powerboard and power supply control is done via the powertools package. It can be setup using the same script as ITSDAQ. The powertools configuration is stored inside the `run` directory.
-```shell
-cd ColdBox/run
-source ../setup.sh
-```
-
-The main program are for powering up and turning off a module. They control the low voltage and high voltage power supplies. The hybrids are also enabled at the correct times. They assume that there is a powerboard in Chuck 5 and that all positions are loaded (to check per module current). However the commands are sent in parallel to all modules.
-
-To power up a module, run the following from inside `run`:
-```shell
-pbv3_coldnoise_powerOn -e equip_testbench.json
-```
-
-To power down a module, run the following from inside `run`:
-```shell
-pbv3_coldnoise_powerOff -e equip_testbench.json
-```
+1. Chiller is set to 20C or turned off.
+2. Peltiers are set in IDLE mode.
+3. Low and High Voltage power supplies are turned off.
 
 # Running A Cold Noise Thermal Cycle
-The cold noise thermal cycle steps through temperatures from 20C to -30C to 10C in steps of 10C. The full module test is run at each temperature position.
+The test runs *X* thermal cycles, with a test at each point. Each thermal cycle
+takes 1.5 hours. See specific sections on how to execute specific commands.
 
 1. Make sure that the box is safe to open (see checklist). Especially that the chiller is at 20C.
 2. Open the box.
@@ -106,33 +35,131 @@ The cold noise thermal cycle steps through temperatures from 20C to -30C to 10C 
 7. Ground the modules using one shorter screw in the top right corner.
 8. Connect the 2x3 molex power cable to the modules. The connector is keyed.
 9. Connect the miniDP connectors. The red tagged cable goes to the left (DATA).
-10. Close the Cold Box.
+10. Close the Cold Box. Check that the GrafAna page says that the box is closed.
 11. Turn on dry air (gauge attached on the left side of the box) as high as you can. Typical maximum reading is 15-20 L/min.
 13. Wait until Cold Box reaches 1-2%RH. Turn down the dry air for ~8L/min.
-15. Power the modules. See "Powerboard and Power Supply Control" for details. The following should be run on the testing computer.
+14. Turn on the LV power supply (`LOCAL`, `OUTPUT` on the left console). The current should read 50 mA * number of modules.
+15. Make sure that ITSDCS is running.
+16. Turn off ITSDAQ.
+17. Regenerate the configuration with the connected modules.
+18. Start ITSDAQ again with the new configuration.
+19. Set the number of thermal cycles to correspond to the available time.
+20. Start the thermal cycling.
+21. Wait for thermal cycling to complete. Monitor the GrafAna for issues.
+22. Turn off LV power supply. (`LOCAL`, `OUTPUT` on the left console).
+23. Remove modules. Make sure to follow the checklist.
+
+# Starting Testing Software
+
+The testing software consists of three parts:
+
+- The Cold Box GUI accessible via browser at [http://localhost:5000](http://localhost:5000) on the testing computer.
+- The ITSDAQ controller that receives commands from the GUI to run tests.
+- The ITSDAQ controller (ITSDCS) that receives commands to monitor Powerboards and control power supplies.
+
+## Cold Box GUI
+
+The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://localhost:5000](http://localhost:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. Note that one needs to hop through `eprexb` to access it.
 
 ```shell
-source ColdBox/setup.sh
-cd ColdBox/run
-pbv3_coldnoise_powerOn -e equip_testbench.json
+ssh yourusername@eprexb
+ssh pi@eplpl004
+cd ~/ppb2preprr
+pipenv run coldbox_controller_webgui.py -c configs/config.conf -v
 ```
-16. Run a quick test with ITSDAQ to ensure that all modules are responding. The following should be run on the testing computer to start the ITSDAQ GUI. Run the "Full Test" hidden under one of the menus (check the name and edit).
+
+Then navigate to the GUI and click the green "Start" button. In about 10-20 seconds, data should start appearing in GrafAna.
+
+### Shutting Down The GUI
+Opening the cold box, even when warm, will trigger the box open warning and spam
+the GUI. The only practical way to get rid of them is to restart the GUI.
+
+- Use the red "Shutdown" button. This will stop the thread and the GUI.
+- `kill $(ps ax | grep coldbox_controller_webgui.py | awk "{print $1}")` on the `eplpl004` command line.
+
+Doing `Ctrl+C` to the process will not stop it due to a bug in thread management.
+
+## ITSDAQ Control
+There are two ITSDAQ macros that need to be running on `epldt116` to control the
+modules.
+
+- DAQ: control the module and runs tests
+- DCS: monitors the powerboards and controls the power supplies
+
+### ITSDCS Control
+The ITSDCS control can be running 24/7. There is no need to restart it for newly
+loaded modules.
+
 ```shell
-source ColdBox/setup.sh
-cd ColdBox/itsdaq-sw
-./RUNITSDAQ.sh
+cd ~/itk-module-testing-workspace/itsdaq-sw
+source ../setup.sh
+./INFLUX_AMAC.sh
 ```
-17. After closing ITSDAQ, start ITSDAQ in DAQ mode by running the following in the **same** terminal.
+
+To shutdown ITSDCS control, use `Ctrl+C`.
+
+### ITSDAQ Control
+The ITSDAQ control needs to be restarted anytime new modules are loaded. This is
+to reload the configuration. See the ITSDAQ configuration for instructions on
+how to generate new configurations.
+
 ```shell
+cd ~/itk-module-testing-workspace/itsdaq-sw
+source ../setup.sh
 ./INFLUX_DAQ.sh
 ```
-18. Navigate to the [Cold Box GUI](http://eplpl004:5000) and click "Start TC" to start thermal cycling.
-19. Once thermal cycling completes, shut down `RUNDAQ.sh` with `Ctrl+C`.
-20. Power down the modules.
+
+To shutdown ITSDCS control, use `Ctrl+C`.
+
+### ITSDAQ Configuration
+The ITSDAQ configurations are stored inside `${SCTDAQ_VAR}/config`, where the
+`SCTDAQ_VAR` is set by the setup script. There is a `p_d_s` script that can
+generate the necessary configuration files.
+
 ```shell
-source ColdBox/setup.sh
-cd ColdBox/run
-pbv3_coldnoise_powerOff -e equip_testbench.json
+cd ~/itk-module-testing-workspace/production_database_scripts
+source ../setup.sh
+python get_token.py
+# copy paste the export command
+python strips/modules/getDAQConfig.py --speed640 --encode --id serial --fmc fmcdp --outDir ${SCTDAQ_VAR}/config 2 SERIAL0 4 SERIAL1
 ```
-21. Set chiller to 20C.
-22. Once chiller is warm (>10C), you can start removing modules.
+Replace the `2`/`3` with the position (counting starts at 1 from the left) of
+the module with the serial number `SERIAL0`/`SERIAL1`.
+
+# Manually Turning Off a Module
+The following commands should be run from the `epldt116` machine if you manually
+need to turn off a module.
+
+```shell
+./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
+./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HYBRID_OFF
+```
+
+Then you can turn off the LV power supply via `LOCAL`, `OUTPUT` on the left
+channel.
+
+# Handling Problems
+The following lists possible issues that can appear when monitoring GrafAna and
+recommended actions to take.
+
+## No Data in GrafAna
+Data will stop appearing if the GUI crashed for some reason. The actions are to
+restart the whole process.
+
+1. Make sure the HV and LV power supplies are off. See "Manually Turning Off a Module."
+2. Restart the GUI.
+3. Start test again.
+
+## Dew Point Breached.
+If any of the measured temperatures fall below the dew point, it is important to
+warm up the box as fast as possible. The HV should be turned off. The LV should
+stay on and the hybrids should remain powered.
+
+1. Use the advanced tab to set the chiller temperature to 20C.
+2. Stop thermal cycling by killing the GUI process.
+3. Start the GUI and only start monitoring. Ensure that the chiller is still set to 20C.
+4. Ramp down HV using the following command. Do not turn off hybrids as they help to keep the module warm.
+```shell
+./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
+```
+
