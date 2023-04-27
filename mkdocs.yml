@@ -34,4 +34,5 @@ nav:
       - 'Cold Jig':
           - 'Local Instructions' : itkstrips/coldjig/local.md
           - 'Software Installation' : itkstrips/coldjig/software.md
+          - 'Thermal Cycling' : itkstrips/coldjig/thermalcycling.md
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
