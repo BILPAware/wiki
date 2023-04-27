@@ -73,7 +73,7 @@ Then install the package in editable mode.
 
 For example,
 ```shell
-git clone --branch setuppy https://gitlab.cern.ch/kkrizka/coldjiglib2.git
+git clone --branch setuppy2 https://gitlab.cern.ch/kkrizka/coldjiglib2.git
 pipenv install -e coldjiglib2/
 ```
 
