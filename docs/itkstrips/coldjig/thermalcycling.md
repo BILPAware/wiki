@@ -7,7 +7,7 @@
 
 # Our Setup
 - Testing is done via the `epldt116` machine using `itkuser2`.
-- GUI runs on the Raspberry Pi `eplpl004` using `pi`. However it is only accessible via `eprexb`. See instuctions for making a tunnel.
+- WebGUI runs on the Raspberry Pi `eplpl004` using `pi`. However it is only accessible via `eprexb`. See instuctions for making a tunnel.
 - GrafAna and InfluxDB are setups on `eplvm003`.
 
 ## Training Modules
@@ -43,7 +43,8 @@ takes 1.5 hours. See specific sections on how to execute specific commands.
 16. Turn off ITSDAQ.
 17. Regenerate the configuration with the connected modules.
 18. Start ITSDAQ again with the new configuration.
-19. Set the number of thermal cycles to correspond to the available time.
+19. Set the number of thermal cycles corresponding in the WebGUI to the available time.
+20. Select loaded chucks in the left hand side of the WebGUI. Do not fill the module serial numbers (they are ignored).
 20. Start the thermal cycling.
 21. Wait for thermal cycling to complete. Monitor the GrafAna for issues.
 22. Turn off LV power supply. (`LOCAL`, `OUTPUT` on the left console).
@@ -129,6 +130,8 @@ the module with the serial number `SERIAL0`/`SERIAL1`.
 # Manually Turning Off a Module
 The following commands should be run from the `epldt116` machine if you manually
 need to turn off a module.
+
+**Manually confirm that a command has "Completed" by checking for a response in the WebGUI.**. This program only sends the command and does not wait for ITSDAQ response.
 
 ```shell
 ./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
