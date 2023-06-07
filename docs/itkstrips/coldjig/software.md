@@ -74,7 +74,7 @@ Then install the package in editable mode.
 For example,
 ```shell
 git clone --branch setuppy2 https://gitlab.cern.ch/kkrizka/coldjiglib2.git
-pipenv install -e coldjiglib2/
+pipenv install -e 'coldjiglib2/[uk]'
 ```
 
 ## Starting the Web Interface
