@@ -36,3 +36,5 @@ nav:
           - 'Software Installation' : itkstrips/coldjig/software.md
           - 'Thermal Cycling' : itkstrips/coldjig/thermalcycling.md
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
+      - 'Local Guides':
+      	  - 'Hybrid-Building Slides' : itkstrips/localguides/hybridbuilding.md
