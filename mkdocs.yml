@@ -37,4 +37,4 @@ nav:
           - 'Thermal Cycling' : itkstrips/coldjig/thermalcycling.md
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
       - 'Local Guides':
-      	  - 'Hybrid-Building Slides' : https://indico.cern.ch/event/1303151/contributions/5480159/attachments/2682043/4652810/BHM_Hybrid_Building_BILPA_2023_07_11.pdf
+          - 'Hybrid-Building Slides' : https://indico.cern.ch/event/1303151/contributions/5480159/attachments/2682043/4652810/BHM_Hybrid_Building_BILPA_2023_07_11.pdf
