@@ -1,1 +1,0 @@
-[Bilpa hybrid-building presentation 11/07/2023](https://indico.cern.ch/event/1303151/contributions/5480159/attachments/2682043/4652810/BHM_Hybrid_Building_BILPA_2023_07_11.pdf)
