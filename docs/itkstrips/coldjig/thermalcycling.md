@@ -65,7 +65,7 @@ The Cold Box GUI should always be running to monitor the conditions of the box a
 ```shell
 ssh yourusername@eprexb
 ssh pi@eplpl004
-cd ~/ppb2preprr
+cd ~/ppb2_20230726
 pipenv run coldbox_controller_webgui.py -c configs/config.conf -v
 ```
 
