@@ -1,5 +1,6 @@
 # Important Links
-- [GrafAna Monitoring of the Cold Box](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s)
+- [GrafAna Monitoring of the Cold Box](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux)
+- [GrafAna Monitoring of the Modules](http://eplvm003.ph.bham.ac.uk:3000/d/JKm4gvAVk/amac_dashboard_flux)
 - [Cold Box GUI](http://localhost:5000) <- see instructions
 - [Warwick Cold Box Manual](https://espace.cern.ch/ITkColdBox/Shared%20Documents/Coldjig%20assembly%20and%20operation.pdf)
 - [Cold Testing Specification](https://edms.cern.ch/document/2228451/3.6)
