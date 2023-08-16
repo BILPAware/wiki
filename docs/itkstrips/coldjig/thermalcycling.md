@@ -167,3 +167,13 @@ stay on and the hybrids should remain powered.
 ./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
 ```
 
+## Missed Command in Influx
+Occasionally ITSDAQ misses a command that was sent to it. If a command appears to be taking too long to complete
+(no "Compelted" response seen in GrafAna), then check if the responsible commander is actually doing something. If
+it is waiting for a command, then you might need to resend it. In a new terminal, source the setup script and run
+the following command. Do not close any existing ITSDAQ instances. Make sure to change `ITSDCS` and `HV_OFF` to the
+receiver and command that was missed.
+
+```shell
+./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
+```
