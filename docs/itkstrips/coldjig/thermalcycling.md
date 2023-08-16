@@ -175,5 +175,5 @@ the following command. Do not close any existing ITSDAQ instances. Make sure to 
 receiver and command that was missed.
 
 ```shell
-./bin/influx_command --sender COLDJIG --receiver ITSDCS --setup BIRMINGHAM --command HV_OFF
+./bin/influx_command --sender COLDJIG --receiver ITSDAQ --setup BIRMINGHAM --command HV_OFF
 ```
