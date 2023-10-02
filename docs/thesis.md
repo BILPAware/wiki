@@ -7,6 +7,10 @@ The following students have performed their thesis work inside the BILPA laborat
 H. Wennlof, May 2021, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/hlow_thesis.pdf)  
 *Development of a Silicon Vertex Tracker for the Electron-Ion Collider*
 
+## ATLAS Phase-II Tracker Upgrade
+M. Baca, April 2018, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/mjb_thesis.pdf)  
+*Search for Production of Dark Matter in Association with a Higgs Boson Decaying to b-bbar with the ATLAS Detector*
+
 ## Monolithic Sensors
 
 P. Freeman, May 2022, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/freeman_thesis.pdf)  
