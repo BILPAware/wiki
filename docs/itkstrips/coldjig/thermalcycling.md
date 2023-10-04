@@ -8,18 +8,18 @@
 
 # Our Setup
 - Testing is done via the `epldt116` machine using `itkuser2`.
-- WebGUI runs on the Raspberry Pi `eplpl004` using `pi`. However it is only accessible via `eprexb`. See instuctions for making a tunnel.
+- WebGUI runs on the Raspberry Pi `eplpl004` using `pi`.
 - GrafAna and InfluxDB are setups on `eplvm003`.
 
 ## Training Modules
 There are two prototype modules, `BHM_SS04` and `BHM_LS02`, that can be used to training. There are prototype modules using the v0 chipset and cannot be operated at the same time as production modules. Their config is saved under `training` ITSDAQ setup.
 
 # Checklist for Opening the Box
-Opening the lid will bring the lab air (~50% RH) into the box, with a rough dew point of 10C. If the box is cold, this can cause condensation on the modules or walls. Make sure that the box is warm before opening it.
+Opening the lid will bring the lab air (~50% RH) into the box, with a rough dew point of 10°C. If the box is cold, this can cause condensation on the modules or walls. Make sure that the box is warm before opening it.
 
 The power supplies should also be off when disconnecting modules. **Always ramp down HV!** Don't just turn it off.
 
-1. Chiller is set to 20C or turned off.
+1. Chiller is at 20°C.
 2. Peltiers are set in IDLE mode.
 3. Low and High Voltage power supplies are turned off.
 
@@ -27,9 +27,9 @@ The power supplies should also be off when disconnecting modules. **Always ramp 
 The test runs *X* thermal cycles, with a test at each point. Each thermal cycle
 takes 1.5 hours. See specific sections on how to execute specific commands.
 
-1. Make sure that the box is safe to open (see checklist). Especially that the chiller is at 20C.
-2. Open the box.
-3. Make sure that the HV and LV power supply outputs are off.
+1. Make sure that the box is safe to open (see checklist). Especially that the chiller is at 20°C.
+2. Make sure that the HV and LV power supply outputs are off.
+3. Open the box.
 4. Remove caps from the mini-DP connectors.
 5. Place modules (testframe and spacer, but without the acrylic covers) on chucks.
 6. Fix the modules using four longer screws in the four corners. See Fig 21 in the Cold Testing Specification document.
@@ -37,37 +37,36 @@ takes 1.5 hours. See specific sections on how to execute specific commands.
 8. Connect the 2x3 molex power cable to the modules. The connector is keyed.
 9. Connect the miniDP connectors. The red tagged cable goes to the left (DATA).
 10. Close the Cold Box. Check that the GrafAna page says that the box is closed.
-11. Turn on dry air (gauge attached on the left side of the box) as high as you can. Typical maximum reading is 15-20 L/min.
-13. Wait until Cold Box reaches 1-2%RH. Turn down the dry air for ~8L/min.
-14. Turn on the LV power supply (`LOCAL`, `OUTPUT` on the left console). The current should read 50 mA * number of modules.
-15. Make sure that ITSDCS is running.
-16. Turn off ITSDAQ.
-17. Regenerate the configuration with the connected modules.
-18. Start ITSDAQ again with the new configuration.
-19. Set the number of thermal cycles corresponding in the WebGUI to the available time.
-20. Select loaded chucks in the left hand side of the WebGUI. Do not fill the module serial numbers (they are ignored).
+11. Turn on dry air (gauge attached on the left side of the box). A good target is 10 L/min.
+12. Set the LV power supply output to 11V and current compliance to 5A.
+13. Turn on the LV power supply to check a reasonable current draw. The current should read 50 mA * number of modules.
+14. Turn off the LV power supply. The coldjig software takes care of powering from now on.
+15. Regenerate the configuration with the connected modules.
+16. Start ITSDCS with the new configuration.
+17. Start ITSDAQ with the new configuration.
+18. Set the number of thermal cycles corresponding in the WebGUI to the available time.
+19. Select loaded chucks in the left hand side of the WebGUI. Do not fill the module serial numbers (they are ignored).
 20. Start the thermal cycling.
 21. Wait for thermal cycling to complete. Monitor the GrafAna for issues.
-22. Turn off LV power supply. (`LOCAL`, `OUTPUT` on the left console).
-23. Remove modules. Make sure to follow the checklist.
+22. Remove modules. Make sure to follow the checklist.
 
 # Starting Testing Software
 
 The testing software consists of three parts:
 
-- The Cold Box GUI accessible via browser at [http://localhost:5000](http://localhost:5000) on the testing computer.
+- The Cold Box GUI accessible via browser at [http://eplpl004:5000](http://eplpl004:5000) on the testing computer.
 - The ITSDAQ controller that receives commands from the GUI to run tests.
 - The ITSDAQ controller (ITSDCS) that receives commands to monitor Powerboards and control power supplies.
 
 ## Cold Box GUI
 
-The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://localhost:5000](http://localhost:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. Note that one needs to hop through `eprexb` to access it.
+The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplpl004:5000](http://eplpl004:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. One needs to hop through `eprexb` to access it.
 
 ```shell
 ssh yourusername@eprexb
 ssh pi@eplpl004
-cd ~/ppb2_20230726
-pipenv run coldbox_controller_webgui.py -c configs/config.conf -v
+cd ~/ppb2_20231004/UK_China_Barrel
+pipenv run coldbox_controller_webgui.py -c configs/birmingham_config.ini -v
 ```
 
 Then navigate to the GUI and click the green "Start" button. In about 10-20 seconds, data should start appearing in GrafAna.
