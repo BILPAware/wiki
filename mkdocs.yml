@@ -38,6 +38,18 @@ nav:
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
       - 'Local Guides':
           - 'Hybrid-Building Slides' : https://indico.cern.ch/event/1303151/contributions/5480159/attachments/2682043/4652810/BHM_Hybrid_Building_BILPA_2023_07_11.pdf
+      - 'Hybrid and Module Assembly':
+      	  - 'Magic Spreadsheets':
+	      - 'Introduction': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_header.md
+	      - 'Hybrid Gluing': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridassembly.md
+	      - 'Module Gluing': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_moduleassembly.md
+	      - 'Hybrid Wire Bonding': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridwirebonding.md
+	      - 'Module Wire Bonding': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridwirebonding.md
+	  - 'Metrology':
+	      - 'Introduction': itkstrips/hybrid_and_module_building/metrology/metrology_header.md
+	      - 'Hybrid Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_hybridmetrology.md
+	      - 'Module Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_modulemetrology.md
+	  - 'ASIC Assembly': itkstrips/hybrid_and_module_building/asicassembly/asicassembly.md
     - 'Muon Collider':
         - 'References': muoncollider/references.md
         - 'MadGraph': muoncollider/madgraph.md
