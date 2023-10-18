@@ -1,8 +1,12 @@
 # ASIC Assembly
 The ASIC assembly is done by code stored in the /home/itkuser2/hybrid_and_module_building/asic_assembly directory (which I’ll call $A from now on.) It uses some python scripts which read in a root file (from the hybrid electrical testing), and use information from that root file to find out which ASICs are physically assembled to the hybrids on that panel, and then assemble those ASICs in the database.
+
 This directory has two sub-directories: **asic_assembly_root_files** and **asic_assembly_scripts**.
+
 **asic_assembly_root_files** is the directory where the root files should be saved. Once you get the root file for a panel, you should move it here (and remember of make a note of which file corresponds to your panel!)
+
 **asic_assembly_scripts** is the directory containing the code used for assembling the ASICs. The code we use is actually embedded deep in a sub-directory (*$A/asic_assembly_scripts/strips/modules*) but there’s a handy link in $A which will take you straight there (`cd link_to_scripts`).
+
 Once you’re in the directory with the code in, all you need to do is run the script *do_assemble_asics_bhm.sh*:
 ```
 source do_assemble_asics_bhm.sh

@@ -45,7 +45,7 @@ nav:
               - 'Hybrid Gluing': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridassembly.md
               - 'Module Gluing': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_moduleassembly.md
               - 'Hybrid Wire Bonding': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridwirebonding.md
-              - 'Module Wire Bonding': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridwirebonding.md
+              - 'Module Wire Bonding': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_modulewirebonding.md
           - 'Metrology':
               - 'Introduction': itkstrips/hybrid_and_module_building/metrology/metrology_header.md
               - 'Hybrid Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_hybridmetrology.md
