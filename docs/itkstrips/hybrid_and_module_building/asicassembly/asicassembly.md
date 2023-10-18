@@ -8,6 +8,7 @@ This directory has two sub-directories: **asic_assembly_root_files** and **asic_
 **asic_assembly_scripts** is the directory containing the code used for assembling the ASICs. The code we use is actually embedded deep in a sub-directory (*$A/asic_assembly_scripts/strips/modules*) but there’s a handy link in $A which will take you straight there (`cd link_to_scripts`).
 
 Once you’re in the directory with the code in, all you need to do is run the script *do_assemble_asics_bhm.sh*:
+
 ```
 source do_assemble_asics_bhm.sh
 ```
