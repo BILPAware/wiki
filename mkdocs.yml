@@ -39,6 +39,7 @@ nav:
       - 'Local Guides':
           - 'Hybrid-Building Slides' : https://indico.cern.ch/event/1303151/contributions/5480159/attachments/2682043/4652810/BHM_Hybrid_Building_BILPA_2023_07_11.pdf
       - 'Hybrid and Module Assembly':
+      	  - 'Simple Linux Commands': itkstrips/hybrid_and_module_building/linuxcommands.md
       	  - 'Magic Spreadsheets':
 	      - 'Introduction': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_header.md
 	      - 'Hybrid Gluing': itkstrips/hybrid_and_module_building/magicspreadsheets/magicspreadsheets_hybridassembly.md
