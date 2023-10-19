@@ -1,5 +1,11 @@
 # ASIC Assembly
-The ASIC assembly is done by code stored in the /home/itkuser2/hybrid_and_module_building/asic_assembly directory (which I’ll call $A from now on.) It uses some python scripts which read in a root file (from the hybrid electrical testing), and use information from that root file to find out which ASICs are physically assembled to the hybrids on that panel, and then assemble those ASICs in the database.
+The ASIC assembly is done by code stored in the directory:
+
+```
+/home/itkuser2/hybrid_and_module_building/asic_assembly
+```
+
+(which I’ll call $A from now on.) It uses some python scripts which read in a root file (from the hybrid electrical testing), and use information from that root file to find out which ASICs are physically assembled to the hybrids on that panel, and then assemble those ASICs in the database.
 
 This directory has two sub-directories: **asic_assembly_root_files** and **asic_assembly_scripts**.
 

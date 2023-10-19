@@ -1,6 +1,13 @@
 # Magic Spreadsheets
 
-The magic spreadsheets code is stored in the directory /home/itkuser2/hybrid_and_module_building/magic_spreadsheets, and is split into four parts: Hybrid Gluing, Hybrid Wire Bonding, Module Gluing and Module Wire Bonding. Each of these parts has its own individual bash script.
+The magic spreadsheets code is stored in the directory:
+
+```
+/home/itkuser2/hybrid_and_module_building/magic_spreadsheets
+```
+
+and is split into four parts: Hybrid Gluing, Hybrid Wire Bonding, Module Gluing and Module Wire Bonding. Each of these parts has its own individual bash script.
+
 
 When you run any one of these scripts, you will see colour-coded ‘logging’ messages roll past on screen. These messages are colour-coded to show you how important they are:
 

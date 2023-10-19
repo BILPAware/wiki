@@ -1,5 +1,11 @@
 # Metrology
-The metrology analysis code is stored in the directory /home/itkuser2/hybrid_and_module_building/metrology (which I’ll call $M from now on), and is split into two parts: hybrid metrology and module metrology. Once the data files have been uploaded to CERNBox, they will be accessible via links in the $M directory, so we don’t need to do any more transferring!
+The metrology analysis code is stored in the directory:
+
+```
+/home/itkuser2/hybrid_and_module_building/metrology
+```
+
+(which I’ll call $M from now on), and is split into two parts: hybrid metrology and module metrology. Once the data files have been uploaded to CERNBox, they will be accessible via links in the $M directory, so we don’t need to do any more transferring!
 
 The process of doing the metrology analysis is as follows:
 
