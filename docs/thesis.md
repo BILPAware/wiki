@@ -8,10 +8,10 @@ H. Wennlof, May 2021, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/h
 *Development of a Silicon Vertex Tracker for the Electron-Ion Collider*
 
 ## ATLAS Phase-II Tracker Upgrade
-D. Briglin, PhD, February 2020, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/db_thesis.pdf)
+D. Briglin, PhD, February 2020, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/db_thesis.pdf)     
 *Prospect Studies for Higgs Boson Pair Production to b bbar gamma gamma Final State at the HL-LHC with the ATLAS Detector*
 
-J. Broughton, PhD, November 2018, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/jxb_thesis.pdf)
+J. Broughton, PhD, November 2018, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/jxb_thesis.pdf)      
 *Searches for Rare Exclusive Higgs Boson Decays to a Meson and an Associated Photon with the ATLAS Detector*
 
 M. Baca, April 2018, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/mjb_thesis.pdf)  
