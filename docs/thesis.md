@@ -8,7 +8,7 @@ H. Wennlof, May 2021, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/h
 *Development of a Silicon Vertex Tracker for the Electron-Ion Collider*
 
 ## ATLAS Phase-II Tracker Upgrade
-J. Lindon, PhD, November 2020, [theis](http://www.ep.ph.bham.ac.uk/publications/thesis/jhl_thesis.pdf)  
+J. Lindon, PhD, November 2020, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/jhl_thesis.pdf)  
 *Particle Collider Probes of Dark Energy, Dark Matter and Generic Beyond Standard Model Signatures in Events With an Energetic Jet and Large Missing Transverse Momentum Using the ATLAS Detector at the LHC*
 
 D. Briglin, PhD, February 2020, [thesis](http://www.ep.ph.bham.ac.uk/publications/thesis/db_thesis.pdf)     
