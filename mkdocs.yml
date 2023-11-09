@@ -53,7 +53,7 @@ nav:
               - 'Module Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_modulemetrology.md
           - 'ASIC Assembly': itkstrips/hybrid_and_module_building/asicassembly/asicassembly.md
       - 'Electrical Testing':
-          - 'Single Module Testbox': itkstrips/electricaltesting/cheatsheet_PPB_module_1Nov23_v1.txt
+          - 'Single Module Testbox': itkstrips/electricaltesting/cheatsheet_PPB_module_9Nov23_v1.txt
     - 'Muon Collider':
         - 'References': muoncollider/references.md
         - 'MadGraph': muoncollider/madgraph.md
