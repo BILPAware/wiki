@@ -1,0 +1,161 @@
+ITk Module tests in the single-module testbox
+
+NEW 9Nov23, Juergen Thomas (jpt@hep)
+For: epldt126 (new PC)
+Account: itkuser2
+
+- Get a database token:
+
+ cd /home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local/production_database_scripts
+ python get_token.py
+ 
+Enter your password, copy/paste the output (very long hex code) 
+into some file eg 'myToken.sh' and execute this file:
+
+ source myToken.sh
+
+- Switch-on the small chiller under the desk (Grant EcoCool), it's
+ set to 18C, no need to change.
+- Install module in the testbox (make sure the
+ power supply outputs are off !)
+- Set nitrogen flow to ~8l/min (above the 5l/min flow metre max)
+- Wait for 5-10min, until the chiller is at +18C and the humidity is >5%
+ The humidity sensor values are here, the 'NTC' is taped to the chuck:
+  
+ http://eplpi001.ph.bham.ac.uk/temphum.php
+ 
+- Switch-on LV power supply (TTI) and HV power supply (Keithley 2410).
+- LV: power-up the Nexys (centre output of the TTI), wait until the
+ row of green LEDs flashes intermittingly. Then power-up the module
+ (left output of the TTI).
+ Note: The HV is fully remote controlled, the front panel controls
+ of the Keithley 2410 don't need to be and shouldn't be touched (!)
+
+Before starting the DAQ, check in this file that the module is
+correctly set in the DAQ configuration:
+
+ gedit /home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local/sctvar/st_system_config.dat &
+
+The default is a LS module which has 'crossed HCC
+bonds' (XHB). All modules like this have a sticker 'XHB' on
+the transport box. Indeed all new modules are 'XHB'.
+Only the uncommented lines are indeed
+applied, namely this line, which is an LS with XHB:
+
+ #        id CCR  s0  Name     (type)
+ Module    0   0   0 JaneDoe0 Barrel_xHCC
+
+The hybrid config now can be the same (!) for any module. Only
+'LS' (one hybrid) and 'SS' (two hybrids), with XHB or not,
+needs to be adjusted in this file, see comments in the file.
+Make sure only the lines for the hybrid(s) required
+are un-commented, ie one for LS, or two for SS.
+
+Now ready to start-up the DAQ.
+Go to the ITSDAQ installation:
+
+ cd /home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local
+
+Set-up the environment (this is required every time)
+and start ITSDAQ:
+
+ source setup_al9_local_root6.26.sh
+ cd itsdaq-sw/
+ ./RUNITSDAQ.sh
+
+Check for possible error messages. Esp if you see 'No AMAC found !',
+this is a problem and the tests can't continue. Ask experts
+for help (eg Juergen, Karol).
+The Keithley 2410 HV will make a 'click' noise during this process,
+this means it is in the correct 'REM' remote control mode.
+Compared to earlier installations, this extra step is now required.
+Without doing this, the setup is not ready:
+
+ AutoConfig(false,false)
+
+If everything looks ok, namely the ABC and HCC chip serial numbers
+are showing, the test can continue. Otherwise, stop and ask
+experts (eg Juergen, Karol).
+Next step si to ramp the high voltage:
+ 
+ HVSupplies[0]->Ramp(-200,25)
+ HVSupplies[0]->Ramp(-350,40)
+
+Note that while having the HV on, the black box _must not_ be opened. 
+Run 'Full Test': 
+Click 'Full Test' button in 'BurstData' GUI window under 'Test'.
+This contains all the tests we require. 
+It takes about 10min. When done, ramp HV (IMPORTANT: Never switch-off
+LV power while HV is 'ON' - blue light on the Keithley 2410)
+This is done in steps (the first number is the voltage, the second
+is the 'compliance' current limit in muA):
+
+ HVSupplies[0]->Ramp(-200,40)
+ HVSupplies[0]->Ramp(-200,22)
+ HVSupplies[0]->Ramp(-100,22)
+ HVSupplies[0]->Ramp(-100,11)
+ HVSupplies[0]->Ramp(-0,11)
+
+Power-down the LV on the AMAC:
+
+ AMACStar_DCDC(-1,0)
+
+and leave ITSDAQ:
+
+ .q
+
+Now can switch-off the LV supplies, first the module
+(left-hand output of TTI) then the Nexys (centre output of TTI).
+Don't swap the module while the Nexys board is running !
+This would be a 'hot swap' with active connections.
+
+And switch-off the chiller if there are no more tests to do.
+The nitrogen should be dialed-down to ~2 l/min, don't close
+it completely as it is used for monitoring the nitrogen system.
+
+Results are in:
+ 
+/home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local/sctvar/ps
+
+and
+
+/home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local/sctvar/results
+
+It makes sense to have a second terminal window open to 
+check the results even while the test is still running.
+
+ cd /home/itkuser2/itsdaq/itsdaq_v9Nov23_FMCDP_local/sctvar
+
+ ls -ltr ps/* 
+ ls -ltr results/*
+ 
+The hybrid serial number is visible there, eg: SN20USBHX2001681. 
+ 
+The 'headline' test result is the 'full response curve' noise
+test, which is the second of the two 'RCPlot' tests.
+
+ ls -ltr ps/*RCPlot*pdf
+
+Check esp the bottom-left plots of p.1 and p.3, this is the input
+noise. This ideally should be continuous and flat at about
+800ENC for an LS module. Outliers above are (likely) shorted
+channels (bonds or on the sensor), noise about 400ENC means
+the sensor is not connected on this channel. 
+The values from this test are here: 
+
+ ls -ltr ps/*_RC_*txt
+
+Finally, it makes sensor to zip-up the test results and copy
+them onto /disk/moose/bilpa/atlas-itk/.
+
+
+
+
+
+ 
+ 
+ 
+
+  
+
+
