@@ -31,6 +31,7 @@ nav:
     - 'MC40 Irradiation Facility':
       - 'Documentation' : mc40/docs.md
     - 'ITk Strips':
+      - 'References': itkstrips/references.md
       - 'Cold Jig':
           - 'Local Instructions' : itkstrips/coldjig/local.md
           - 'Software Installation' : itkstrips/coldjig/software.md
