@@ -25,6 +25,7 @@ nav:
       - 'Particle Physics' : guides/pp.md
       - 'Silicon Detectors' : guides/silicon.md
     - 'Procedures' :
+      - 'Training' : procedures/training.md
       - 'Shutdown' : procedures/shutdown.md
     - 'Monitoring' :
       - 'InfluxDB + GrafAna' : monitoring/influx.md

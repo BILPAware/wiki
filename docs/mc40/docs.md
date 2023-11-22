@@ -10,7 +10,7 @@ These papers document the characterization of the irradiation facility and descr
 ## Theses
 As always, the technical documentation is available only in the theses of past students.
 
-### [Search for Production of Dark Matter in Association with a Higgs Boson Decaying to b-bbar with the ATLAS Detector](http://www.ep.ph.bham.ac.uk/publications/thesis/mjb_thesis.pdf), M. Baca
+[Search for Production of Dark Matter in Association with a Higgs Boson Decaying to b-bbar with the ATLAS Detector](http://www.ep.ph.bham.ac.uk/publications/thesis/mjb_thesis.pdf), M. Baca
 
 Section 3.5, "The Birmingham Irradiation Facility", describes the work done to commission the facility for ITk Strip sensor irradiations. Includes description of:
 
