@@ -8,7 +8,8 @@ The following is a list of specific trainings for doing work in the BILPA cleanr
 ## Recommended
 If you are using the relevant equipment, then these trainings are **mandatory**. If you are not using the relevant equipment, then they are only *highly recommended*.
 
-- [Radiation Safety Training](https://bham.sharepoint.com/sites/POD/SitePages/Ionising-Radiation-Awareness.aspx)
-- [Laser Safety Training](https://bham.sharepoint.com/sites/POD/SitePages/Laser-Safety-Awareness.aspx)
+- [Radiation Safety Training](https://bham.sharepoint.com/sites/POD/SitePages/Ionising-Radiation-Awareness.aspx): If handing radioactive sources.
+- [Laser Safety Training](https://bham.sharepoint.com/sites/POD/SitePages/Laser-Safety-Awareness.aspx): If deadling with setups including lasers (TCT).
+- MC40 Cyclotron Training by Prof. Carl Wheldon
 
-Inform Laura Gonella when you have completed a training and when it expires.
+Inform Laura Gonella when you have completed a training.
