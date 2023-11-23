@@ -23,6 +23,7 @@ nav:
       - 'Computing' : guides/computing.md
       - 'Electronics' : guides/electronics.md
       - 'Particle Physics' : guides/pp.md
+      - 'ROOT' : guides/root.md
       - 'Silicon Detectors' : guides/silicon.md
     - 'Procedures' :
       - 'Training' : procedures/training.md
