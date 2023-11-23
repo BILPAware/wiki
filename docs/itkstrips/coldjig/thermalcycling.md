@@ -1,6 +1,6 @@
 # Important Links
-- [GrafAna Monitoring of the Cold Box](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux)
-- [GrafAna Monitoring of the Modules](http://eplvm003.ph.bham.ac.uk:3000/d/JKm4gvAVk/amac_dashboard_flux)
+- [GrafAna Monitoring of the Cold Box](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux)
+- [GrafAna Monitoring of the Modules](http://eprex5.ph.bham.ac.uk:3000/d/JKm4gvAVk/amac_dashboard_flux)
 - [Cold Box GUI](http://localhost:5000) <- see instructions
 - [Warwick Cold Box Manual](https://espace.cern.ch/ITkColdBox/Shared%20Documents/Coldjig%20assembly%20and%20operation.pdf)
 - [Cold Testing Specification](https://edms.cern.ch/document/2228451/3.6)
@@ -9,7 +9,7 @@
 # Our Setup
 - Testing is done via the `epldt116` machine using `itkuser2`.
 - WebGUI runs on the Raspberry Pi `eplpl004` using `pi`.
-- GrafAna and InfluxDB are setups on `eplvm003`.
+- GrafAna and InfluxDB are setups on `eprex5`.
 
 ## Training Modules
 There are two prototype modules, `BHM_SS04` and `BHM_LS02`, that can be used to training. There are prototype modules using the v0 chipset and cannot be operated at the same time as production modules. Their config is saved under `training` ITSDAQ setup.
@@ -60,7 +60,7 @@ The testing software consists of three parts:
 
 ## Cold Box GUI
 
-The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eplvm003.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplpl004:5000](http://eplpl004:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. One needs to hop through `eprexb` to access it.
+The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplpl004:5000](http://eplpl004:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. One needs to hop through `eprexb` to access it.
 
 ```shell
 ssh yourusername@eprexb
