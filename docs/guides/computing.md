@@ -21,6 +21,7 @@ Most of our software is designed to be run on a Linux computer. Using it is very
 Git is a common and very useful tool for versioning your source code. One's will see a significant improvement to their life if they learn the concepts behind git instead of just blindly copy-pasting commands.
 
 - [Learn Git Branching](https://learngitbranching.js.org/)
+- [Getting Started with CERN GitLab - US Computing Bootcamp 2020](https://aroepe.github.io/atlas-gitlab/)
 
 ## GDB
 The GNU Debugger is a much better debugging tool that `cout` statements.
@@ -31,6 +32,10 @@ The GNU Debugger is a much better debugging tool that `cout` statements.
 Tutorial on useful Python libraries for particle physics data analysis.
 
 - [Uproot Tutorial](https://masonproffitt.github.io/uproot-tutorial/): uproot is a lighweight and modern Python library for ROOT I/O
+
+# ATLAS Computing
+
+- [The US ATLAS Computing Bootcamp 2020](https://matthewfeickert.github.io/usatlas-computing-bootcamp-2020/): Set of tutorials designed to get oneself familiar with the computing tools (git, cmake, docker) used by the ATLAS collaboration. Morning lectures focus on the (generic) tool itself. Afternoon lectures focus on how it is used by ATLAS.
 
 # Examples
 Useful examples and code snipplets.
