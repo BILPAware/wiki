@@ -1,15 +1,11 @@
 # Important Links
 - [GrafAna Monitoring of the Cold Box](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux)
 - [GrafAna Monitoring of the Modules](http://eprex5.ph.bham.ac.uk:3000/d/JKm4gvAVk/amac_dashboard_flux)
-- [Cold Box GUI](http://localhost:5000) <- see instructions
+- [Cold Box GUI](http://eprex5.ph.bham.ac.uk:5000)
+- [Official ColdJig Software Documentation](https://gitlab.cern.ch/groups/ColdJigDCS/-/wikis/home)
 - [Warwick Cold Box Manual](https://espace.cern.ch/ITkColdBox/Shared%20Documents/Coldjig%20assembly%20and%20operation.pdf)
 - [Cold Testing Specification](https://edms.cern.ch/document/2228451/3.6)
 - [Module Testing Twiki](https://twiki.cern.ch/twiki/bin/view/Atlas/ABCStarHybridModuleTestsV2)
-
-# Our Setup
-- Testing is done via the `epldt116` machine using `itkuser2`.
-- WebGUI runs on the Raspberry Pi `eplpl004` using `pi`.
-- GrafAna and InfluxDB are setups on `eprex5`.
 
 ## Training Modules
 There are two prototype modules, `BHM_SS04` and `BHM_LS02`, that can be used to training. There are prototype modules using the v0 chipset and cannot be operated at the same time as production modules. Their config is saved under `training` ITSDAQ setup.
@@ -40,7 +36,7 @@ takes 1.5 hours. See specific sections on how to execute specific commands.
 11. Turn on dry air (gauge attached on the left side of the box). A good target is 10 L/min.
 12. Set the LV power supply output to 11V and current compliance to 5A.
 13. Turn on the LV power supply to check a reasonable current draw. The current should read 50 mA * number of modules.
-14. Turn off the LV power supply. The coldjig software takes care of powering from now on.
+14. Turn off the LV power supply. The coldjig software will take care of powering as part of the thermal cycling sequence.
 15. Regenerate the configuration with the connected modules.
 16. Start ITSDCS with the new configuration.
 17. Start ITSDAQ with the new configuration.
@@ -54,22 +50,23 @@ takes 1.5 hours. See specific sections on how to execute specific commands.
 
 The testing software consists of three parts:
 
-- The Cold Box GUI accessible via browser at [http://eplpl004:5000](http://eplpl004:5000) on the testing computer.
+- The Cold Box GUI accessible via browser at [http://eplgw1:5000](http://eplgw1:5000) on the testing computer.
 - The ITSDAQ controller that receives commands from the GUI to run tests.
 - The ITSDAQ controller (ITSDCS) that receives commands to monitor Powerboards and control power supplies.
 
 ## Cold Box GUI
 
-The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplpl004:5000](http://eplpl004:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `eplpl004` machine. One needs to hop through `eprexb` to access it.
+The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplgw1:5000](http://eplgw1:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `bpapl004` machine. One needs to hop through `eplgw1` to access it.
 
 ```shell
 ssh yourusername@eprexb
-ssh pi@eplpl004
+ssh yourusername@eplgw1
+ssh pi@bpapl004
 cd ~/ppb2_20231004/UK_China_Barrel
 pipenv run coldbox_controller_webgui.py -c configs/birmingham_config.ini -v
 ```
 
-Then navigate to the GUI and click the green "Start" button. In about 10-20 seconds, data should start appearing in GrafAna.
+Then navigate to the WebGUI in a browser and click the green "Start" button. In about 10-20 seconds, data should start appearing in GrafAna.
 
 ### Shutting Down The GUI
 Opening the cold box, even when warm, will trigger the box open warning and spam
@@ -94,7 +91,7 @@ loaded modules.
 ```shell
 cd ~/itk-module-testing-workspace/itsdaq-sw
 source ../setup.sh
-./INFLUX_AMAC.sh
+INFLUX_COMMAND_SET=2 ./INFLUX_AMAC.sh
 ```
 
 To shutdown ITSDCS control, use `Ctrl+C`.
@@ -107,7 +104,7 @@ how to generate new configurations.
 ```shell
 cd ~/itk-module-testing-workspace/itsdaq-sw
 source ../setup.sh
-./INFLUX_DAQ.sh
+INFLUX_COMMAND_SET=2 ./INFLUX_DAQ.sh
 ```
 
 To shutdown ITSDCS control, use `Ctrl+C`.

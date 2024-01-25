@@ -20,14 +20,9 @@ for more information.
 - `epldt116`: DAQ computer for running ITSDAQ. It uses the same file system and
 authentication as the group desktop computers. A local `itkuser2` is available
 for production testing.
-- `eplpl004`: Raspberry Pi computer for control of the coldjig and running the
-ColdJig GUI. A common user, `pi`, should be used by everyone.
-
-Note that the `eplpl004` computer is only accessible via the `eprexb` gateway.
-One needs to create a remote SSH tunnel on the GUI port (`5000`) to access it.
-The following command should be executed on `eprexb` to access the GUI via a
-browser on any of the group desktop computers.
-
-```shell
-ssh -R 5000:eplpl004:5000 epldt116 # replace epldt116 with your desktop
-```
+- `eplgw1`: Another gateway isolating non-standard computing setups from rest of the
+network. Explicit access has to be requested.
+- `bpapi004`: Raspberry Pi computer for control of the coldjig and running the
+ColdJig GUI. A common user, `pi`, should be used by everyone. SSH access is only
+posssible through the `eplgw1` gateway. The WebGUI port (`5000`) is being forwarded
+and accessible from all PP cluster computers.
