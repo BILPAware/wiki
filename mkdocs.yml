@@ -36,7 +36,6 @@ nav:
       - 'References': itkstrips/references.md
       - 'Cold Jig':
           - 'Local Instructions' : itkstrips/coldjig/local.md
-          - 'Software Installation' : itkstrips/coldjig/software.md
           - 'Thermal Cycling' : itkstrips/coldjig/thermalcycling.md
           - 'Cold Noise Testing' : itkstrips/coldjig/cntesting.md
       - 'Local Guides':
