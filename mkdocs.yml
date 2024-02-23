@@ -58,6 +58,7 @@ nav:
               - 'GNU Emacs': itkstrips/hybrid_and_module_building/cheatsheets/cs_emacs.md
               - 'Magic Spreadsheets Gluing': itkstrips/hybrid_and_module_building/cheatsheets/cs_magicspreadsheets_assembly.md
               - 'Magic Spreadsheets Wire Bonding': itkstrips/hybrid_and_module_building/cheatsheets/cs_magicspreadsheets_wirebonding.md
+              - 'Magic Spreadsheets Keys': itkstrips/hybrid_and_module_building/cheatsheets/cs_spreadsheetkeys.md
       - 'Electrical Testing':
           - 'Single Module Testbox': itkstrips/electricaltesting/cheatsheet_PPB_module_9Nov23_v1.txt
     - 'Muon Collider':
