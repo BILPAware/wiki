@@ -53,9 +53,9 @@ nav:
               - 'Hybrid Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_hybridmetrology.md
               - 'Module Metrology': itkstrips/hybrid_and_module_building/metrology/metrology_modulemetrology.md
           - 'ASIC Assembly': itkstrips/hybrid_and_module_building/asicassembly/asicassembly.md
-	  - 'Cheat Sheets':
-	      - 'Linux/Bash': itkstrips/hybrid_and_module_building/cheatsheets/cs_linuxbash.md
-	      - 'GNU Emacs': itkstrips/hybrid_and_module_building/cheatsheets/cs_emacs.md
+          - 'Cheat Sheets':
+              - 'Linux/Bash': itkstrips/hybrid_and_module_building/cheatsheets/cs_linuxbash.md
+              - 'GNU Emacs': itkstrips/hybrid_and_module_building/cheatsheets/cs_emacs.md
       - 'Electrical Testing':
           - 'Single Module Testbox': itkstrips/electricaltesting/cheatsheet_PPB_module_9Nov23_v1.txt
     - 'Muon Collider':
