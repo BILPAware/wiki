@@ -3,6 +3,7 @@ Directory = A folder
 Working Directory = The folder you are currently working in.
 
 # Cheat Sheet
+
 | Command | Use | Description |
 | ------- | --- | ----------- |
 | _pwd_ | print working directory | Show the path to the current working directory |

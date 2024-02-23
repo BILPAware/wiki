@@ -1,20 +1,25 @@
 # Opening GNU Emacs
+
 Open Emacs:
+
 ```
 emacs filename.extension
 ```
 
 Open Emacs as a background task:
+
 ```
 emacs filename.extension &
 ```
 
 Open Emacs in the terminal window:
+
 ```
 emacs -nw filename.extension
 ```
 
 # Cheat Sheet
+
 | Command | Use | Description |
 | ------- | --- | ----------- |
 | Ctrl-X Ctrl-S | save | Save the current file |
