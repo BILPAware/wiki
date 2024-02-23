@@ -1,6 +1,7 @@
 # Guide to Gluing/Assembly Shell Scripts:
 
 | Script | Use | Description |
+| ------ | --- | ----------- |
 | `run_assembly_hybrids_bhm.sh` | Hybrid Gluing and Panel Assembly | Creates a new Hybrid Assembly. Assembles the Flex to the Hybrid Assembly using the Flex Code. Uploads a Glue Weight Test to the Hybrid Assembly. Assembles the Hybrid Assembly to a Hybrid Panel(WIP). |
 | `run_assembly_modules_bhm.sh` | LS Module Gluing | Assembles a Hybrid to the LS Module. Assembles a Powerboard to the LS Module. Uploads a Hybrid/PB Glue Weight Test to the LS Module. Moves LS Module to `GLUED` stage. |
 
