@@ -15,7 +15,7 @@ emacs run_wirebonding_hybrids_bhm.sh &
 ```
 
 ## Edit Line 
-Edit Line starting with `python`, to match the sheet, tab, credentials, column and batch you are using
+Edit Line starting with `python`, to match the sheet, tab, credentials, column and batch you are using, e.g.:
 ```
 python ./run_hybrid_wirebonding.py -s "Wirebonding Panels (CrackingSensorsGromit)" -t "P18_Use4_X_P0" -c "/home/rb/Documents/ITk/ItKDB/cam_itk/credentials/credentials.yml"
 ```

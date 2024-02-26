@@ -16,7 +16,7 @@ emacs run_assembly_hybrids_bhm.sh &
 ```
 
 ## Edit Line 
-Edit Line starting with `python`, to match the sheet, tab, credentials, column and batch you are using
+Edit Line starting with `python`, to match the sheet, tab, credentials, column and batch you are using, e.g.:
 ```
 python ./run_hybrids.py -s "BHM_Hybrid_Assembly_410umFlex" -t "P30_Use1" -c "/home/rb/Documents/ITk/ItKDB/cam_itk/credentials/credentials.yml" -l "C" -b "OTHER"
 ```
