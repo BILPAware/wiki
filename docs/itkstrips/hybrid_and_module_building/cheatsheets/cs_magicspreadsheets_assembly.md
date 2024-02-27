@@ -39,3 +39,5 @@ Watch the logging output for `WARNING` messages, which usually appear in purple.
 `WARNING` messages which say something like `Logger not passed to SOMETHING` aren't a worry, it's a minor bug which doesn't affect the uploads.
 
 Other `WARNING` messages indicate something wrong in the code or with the Google Sheets, most often that something in the Google Sheets isn't quite right. Just check the spreadsheet for the error, fix it, and re-run.
+
+###  MAKE SURE YOU HAVE FILLED IN ALL GREEN ROWS IN THE GSHEETS!
