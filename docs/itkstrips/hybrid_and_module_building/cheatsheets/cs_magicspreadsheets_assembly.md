@@ -32,6 +32,7 @@ Run the script using the `source` command in the linux terminal, e.g.
 ```
 source run_assembly_hybrids_bhm.sh
 ```
+###  MAKE SURE YOU HAVE FILLED IN ALL GREEN ROWS IN THE GSHEETS!
 
 ## Check Output
 Watch the logging output for `WARNING` messages, which usually appear in purple.
@@ -40,4 +41,3 @@ Watch the logging output for `WARNING` messages, which usually appear in purple.
 
 Other `WARNING` messages indicate something wrong in the code or with the Google Sheets, most often that something in the Google Sheets isn't quite right. Just check the spreadsheet for the error, fix it, and re-run.
 
-###  MAKE SURE YOU HAVE FILLED IN ALL GREEN ROWS IN THE GSHEETS!

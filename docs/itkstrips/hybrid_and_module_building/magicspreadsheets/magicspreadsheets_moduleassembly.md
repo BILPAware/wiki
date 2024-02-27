@@ -38,3 +38,4 @@ source run_assembly_modules_bhm.sh
 ```
 
 and watch it go! (Taking note of the info and any warning/error messages you get…)
+###  MAKE SURE YOU HAVE FILLED IN ALL GREEN ROWS IN THE GSHEETS!
