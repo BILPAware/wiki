@@ -35,7 +35,7 @@ takes 1.5 hours. See specific sections on how to execute specific commands.
 10. Close the Cold Box. Check that the GrafAna page says that the box is closed.
 11. Turn on dry air (gauge attached on the left side of the box). A good target is 10 L/min.
 12. Set the LV power supply output to 11V and current compliance to 5A.
-13. Turn on the LV power supply to check a reasonable current draw. The current should read 50 mA * number of modules.
+13. Turn on the LV power supply to check a reasonable current draw. The current should read 50 mA times the number of modules.
 14. Turn off the LV power supply. The coldjig software will take care of powering as part of the thermal cycling sequence.
 15. Regenerate the configuration with the connected modules.
 16. Start ITSDCS with the new configuration.
