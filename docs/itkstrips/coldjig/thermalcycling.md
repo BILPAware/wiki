@@ -56,12 +56,12 @@ The testing software consists of three parts:
 
 ## Cold Box GUI
 
-The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplgw1:5000](http://eplgw1:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `bpapl004` machine. One needs to hop through `eplgw1` to access it.
+The Cold Box GUI should always be running to monitor the conditions of the box at all times. The data can be viewed on [GrafAna](http://eprex5.ph.bham.ac.uk:3000/d/buq47AcVk/uk_china_coldjig_dashboard_flux?orgId=1&from=now-15m&to=now&refresh=5s). If the GUI is not running (ie: [http://eplgw1:5000](http://eplgw1:5000) is not accessible) or needs to be restarted, it can be started by running the following on the `bpapi004` machine. One needs to hop through `eplgw1` to access it.
 
 ```shell
 ssh yourusername@eprexb
 ssh yourusername@eplgw1
-ssh pi@bpapl004
+ssh pi@bpapi004
 cd ~/ppb2_20231004/UK_China_Barrel
 pipenv run coldbox_controller_webgui.py -c configs/birmingham_config.ini -v
 ```
