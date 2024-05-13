@@ -64,4 +64,7 @@ nav:
     - 'Muon Collider':
         - 'References': muoncollider/references.md
         - 'MadGraph': muoncollider/madgraph.md
+    - '4D Tracking':
+        - 'TDCPix':
+            - 'CERN Test Setup': 4dtracking/tdcpix/cernsetup.md
     - 'Past Student Thesis': thesis.md
