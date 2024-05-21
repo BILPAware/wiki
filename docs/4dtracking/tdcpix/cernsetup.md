@@ -22,7 +22,7 @@ Point your browser to [http://localhost:3000](http://localhost:3000) or directly
 |-------------|---------|---------|
 | Chip Power (PLL Disabled) | 3.6V | 1.97 A |
 | Chip Power (PLL Enabled) | 3.6V | 3.26 A |
-| Sensor Bias (Testing) | -10V |  |
+| Sensor Bias (Testing) | -10V | around -60 nA |
 
 ## Code
 
