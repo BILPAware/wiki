@@ -66,8 +66,41 @@ The `InterfaceController` must be running at all times. If the DAQ gets stuck, s
 ./InterfaceController reset
 ```
 
+Something needs to be initialized after the interface controller is running.
+
+```shell
+./initialise
+./en_daq
+```
+
 The PLL needs to be enabled when running tests. When no running tests, please disable it (first arugment `0`) as this increases the chip power usage considerably.
 
 ```shell
 ./PLLEnable 1
-``
+```
+
+## Power Supply Control
+
+The chip power and sensor bias power supplies are remotely controlable. The [labRemote](https://gitlab.cern.ch/berkeleylab/labRemote) framework should be used for controlling them. There is a monitoring program running 24/7 with data pushed into InfluxDB. See the section on monitoring on how to visualize this information in GrafAna. The `labRemote` takes care of access control when changing settings.
+
+Documentation of labRemote is available in the project itself. For our purposes, you can use the central installation under `/home/gtk2021/labRemote`. The following commands should be ran from it. An equipment confuration file is available under `/home/gtk2021/labRemote/input-hw.json`.
+
+The following command turn on chip power. To power-down, use the `power-off` argument.
+
+```shell
+./build/bin/powersupply -e input-hw.json  -c Vpower power-on
+```
+
+The following command enables a sensor bias of -10 V.
+
+```shell
+./build/bin/powersupply -e input-hw.json  -c Vbias power-on
+./build/bin/powersupply -e input-hw.json  -c Vbias set-voltage -- -10
+```
+
+To remove sensor bias, run the following.
+
+```shell
+./build/bin/powersupply -e input-hw.json  -c Vbias set-voltage -- 0
+./build/bin/powersupply -e input-hw.json  -c Vbias power-off
+```
