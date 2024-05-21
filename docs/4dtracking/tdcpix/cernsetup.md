@@ -83,7 +83,14 @@ The PLL needs to be enabled when running tests. When no running tests, please di
 
 The chip power and sensor bias power supplies are remotely controlable. The [labRemote](https://gitlab.cern.ch/berkeleylab/labRemote) framework should be used for controlling them. There is a monitoring program running 24/7 with data pushed into InfluxDB. See the section on monitoring on how to visualize this information in GrafAna. The `labRemote` takes care of access control when changing settings.
 
-Documentation of labRemote is available in the project itself. For our purposes, you can use the central installation under `/home/gtk2021/labRemote`. The following commands should be ran from it. An equipment confuration file is available under `/home/gtk2021/labRemote/input-hw.json`.
+Documentation of labRemote is available in the project itself. For our purposes, you can use the central installation under `/home/gtk2021/labRemote`. The following commands should be ran from that directory. An equipment confuration file is available under `/home/gtk2021/labRemote/input-hw.json`.
+
+There are two channels defined.
+
+| Channel Name | Description | Comment |
+|-------------|---------|---------|
+| `Vpower` | The chip power provided via a TTi. | Keep this on, unless you really really need to power cycle. |
+| `Vbias` | The sensor bias provided via a Keithley2410. | Make sure the chip power is ON when applying it. |
 
 The following command turn on chip power. To power-down, use the `power-off` argument.
 
