@@ -66,3 +66,8 @@ The `InterfaceController` must be running at all times. If the DAQ gets stuck, s
 ./InterfaceController reset
 ```
 
+The PLL needs to be enabled when running tests. When no running tests, please disable it (first arugment `0`) as this increases the chip power usage considerably.
+
+```shell
+./PLLEnable 1
+``
