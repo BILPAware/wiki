@@ -25,6 +25,7 @@ nav:
       - 'Particle Physics' : guides/pp.md
       - 'ROOT' : guides/root.md
       - 'Silicon Detectors' : guides/silicon.md
+      - 'Remote-SSH' : guides/ssh.md
     - 'Procedures' :
       - 'Training' : procedures/training.md
       - 'Shutdown' : procedures/shutdown.md
