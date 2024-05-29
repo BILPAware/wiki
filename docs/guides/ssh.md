@@ -29,10 +29,16 @@ Host gtk
 
 1. If you did everything right, just press `Ctrl + Shift + P` and start typing `Remote-SSH: Connect to Host`
 
-2. From the dropdown menu choose `tdcpix-testbench` and enter passwords (first password is for connection to the main host (lxplus))
+2. From the dropdown menu choose `gtk` and enter passwords (first password is for connection to the main host (lxplus))
 
 3. Open project folder, enjoy.
 
 NB you can start terminals in VS Code, they are all will be SSHed to the remote machine.
 
-This is the minimum you need to establish connection. If you want to make your life even easier you could generate keys for SSH conncetion and copy them to the remote host/your local machine in order to avoid entering passwords each time
+This is the minimum you need to establish connection. If you want to make your life even easier you could generate keys for SSH conncetion and copy them to the remote host/your local machine in order to avoid entering passwords each time.
+
+This approach also makes it easier to connect to the machine or host from terminal, just: 
+
+```ssh
+ssh gtk or ssh lxplus
+```
