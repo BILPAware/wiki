@@ -26,7 +26,7 @@ Point your browser to [http://localhost:3000](http://localhost:3000) or directly
 
 ## Code
 
-A git repository with the code is available at [https://gitlab.cern.ch/bvelghe/tdcpix-test-bench](https://gitlab.cern.ch/bvelghe/tdcpix-test-bench). A central clone exists in the shared account under `/home/gtk2021/projects/tdcpix-test-bench`.
+A git repository with the code is available at [https://gitlab.cern.ch/bilpa/TDCPix/tdcpix-test-bench](https://gitlab.cern.ch/bvelghe/tdcpix-test-bench). A central clone exists in the shared account under `/home/gtk2021/projects/tdcpix-test-bench`.
 
 ### Installation
 
@@ -43,7 +43,7 @@ make install
 Now you can compile the `tdcpix-test-bench` project. Note that you'll have to source the `setup.sh` in every new session when using the testbench. It setups all the necessary paths and configuration variables.
 
 ```shell
-git clone ssh://git@gitlab.cern.ch:7999/bvelghe/tdcpix-test-bench.git
+git clone ssh://git@gitlab.cern.ch:7999/bilpa/TDCPix/tdcpix-test-bench.git
 cd tdcpix-test-bench/
 source setup.sh
 cd .libs
