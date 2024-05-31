@@ -62,9 +62,15 @@ nav:
               - 'Magic Spreadsheets Keys': itkstrips/hybrid_and_module_building/cheatsheets/cs_spreadsheetkeys.md
       - 'Electrical Testing':
           - 'Single Module Testbox': itkstrips/electricaltesting/cheatsheet_PPB_module_9Nov23_v1.txt
-    - 'Muon Collider':
-        - 'References': muoncollider/references.md
-        - 'MadGraph': muoncollider/madgraph.md
+    - 'Future Colliders':
+        - 'Muon Collider':
+            - 'References': muoncollider/references.md
+            - 'MadGraph': muoncollider/madgraph.md
+        - 'FCCee':
+            - 'References': fccee/references.md
+        - 'Our Projects':
+            - 'W mass':
+                - 'References': projects/wmass/references.md
     - '4D Tracking':
         - 'TDCPix':
             - 'CERN Test Setup': 4dtracking/tdcpix/cernsetup.md
