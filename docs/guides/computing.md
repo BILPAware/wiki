@@ -8,6 +8,7 @@ Most of our software is designed to be run on a Linux computer. Using it is very
 
 - [Learning the Shell](http://linuxcommand.org/lc3_learning_the_shell.php)
 - [SSH and SCP](https://acloudguru.com/blog/engineering/ssh-and-scp-howto-tips-tricks): Working on a Linux machine remotely.
+- [tmux](https://hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/): A multiplexers for manu virtual terminals at a remote (or local) host.
 
 ## Programming
 - [Learn C++](https://www.learncpp.com/): C++ tutorial recommended by Adam.
