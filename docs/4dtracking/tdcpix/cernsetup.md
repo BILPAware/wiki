@@ -70,13 +70,14 @@ Something needs to be initialized after the interface controller is running.
 
 ```shell
 ./initialise
+./PLLEnable 1
 ./en_daq
 ```
 
-The PLL needs to be enabled when running tests. When no running tests, please disable it (first arugment `0`) as this increases the chip power usage considerably.
+The PLL needs to be enabled when running tests via the `PLLEnable 1` command above. When not running tests, please disable it (first arugment `0`) as this increases the chip power usage considerably.
 
 ```shell
-./PLLEnable 1
+./PLLEnable 0
 ```
 
 ## Power Supply Control
