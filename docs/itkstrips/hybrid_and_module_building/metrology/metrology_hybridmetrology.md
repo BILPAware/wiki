@@ -1,4 +1,11 @@
 # Hybrid Metrology
+
+## Uploading data
+
+Hybrid metrology data should be uploaded via the ALMA9 PC to */disk/moose/atlas/ITk-production/metrology/hybrids/*. You can find links to this repository in the Favourites bar of the File Explorer or in the Home directory.
+
+## Analysis
+
 Hybrid metrology analysis is run using *hybrid_metrology_test_withfileupload.sh*. This script is quite long, but don’t worry! We don’t need to change much.
 
 To edit the script, open it in *emacs* using the command:

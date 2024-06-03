@@ -1,5 +1,11 @@
 # Module Metrology
 
+## Uploading
+
+Module metrology data should be uploaded via the ALMA9 PC to */disk/moose/atlas/ITk-production/metrology/modules/*. You can find links to this repository in the Favourites bar of the File Explorer or in the Home directory.
+
+## Analysis
+
 Similarly, the metrology is run using *module_metrology_test_withfileupload.sh*. Again, we only need to change a couple of lines.
 
 To edit the script, open it in *emacs* using the command:

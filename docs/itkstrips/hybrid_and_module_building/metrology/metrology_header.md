@@ -1,4 +1,17 @@
 # Metrology
+
+## Upload Metrology Data
+
+To upload metrology data to moose, you should take the memory stick and insert it into the ALMA9 PC (the one next to the wire bonders). Open up a file explorer, and locate the metrology repository on moose. There are several ways of doing this:
+
+1. In the File Explorer, find the left-hand shortcuts bar, and click on "Favourites." You should find links to the moose repository in there.
+
+2. In the File Explorer, find the left-hand shortcuts bar, and click on "Home." You should find links to the moose repository in there.
+
+3. In the File Explorer, navigate to */disk/moose/atlas/ITk-production/metrology/[hybrids/modules]*
+
+## Metrology Analysis
+
 The metrology analysis code is stored in the directory:
 
 ```
