@@ -19,7 +19,7 @@ nav:
     - Welcome: index.md
     - 'Official Page': http://www.ep.ph.bham.ac.uk/general/SiliconLab/index.html
     - 'Starter Guides':
-      - 'Our Group' :guides/groupintro.md
+      - 'Our Group' : guides/groupintro.md
       - 'ATLAS' : guides/atlas.md
       - 'Computing' : guides/computing.md
       - 'Electronics' : guides/electronics.md
