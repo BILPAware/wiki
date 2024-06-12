@@ -2,7 +2,7 @@
 
 ## Generating Samples
 
-Following the instrucions under [uC MadGraph](muoncollider/madgraph.md) on how to setup the full MadGraph chain with a shower and a simplified detector simulation.
+Following the instrucions under [uC MadGraph](/muoncollider/madgraph) on how to setup the full MadGraph chain with a shower and a simplified detector simulation.
 
 The following instructions are targetting a Muon Collider. However the setup should be the same for FCCee, with a change in the initial state.
 
