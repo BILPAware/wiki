@@ -21,3 +21,9 @@ done
 ```
 
 ## Sample List
+
+A few test files are copied to the following location. Unclear if the W mass variation was correctly propagated.
+
+```
+/disk/moose/general/FutureWMass/samples/
+```

@@ -9,31 +9,13 @@ This is not a tutorial on using MadGraph5_aMC@NLO. Other excellent resources exi
 
 ## Setting Up Software
 
-Standalone aMC@NLO works out of the box on the cluster computers. However the the aMC@NLO + Pythia 8 + Delphes + ExROOTAnalysis chain needs to be run inside a container. This is due to missing dependencies on our computers. The ATLAS Alma9 container with and LCG view from CVMFS works.
-
-The ATLAS Alma9 container can be started with the following command. All future command should be run inside of it.
-
-```shell
-apptainer shell --cleanenv -B/disk/moose -B/cvmfs /cvmfs/unpacked.cern.ch/registry.hub.docker.com/atlasadc/atlas-grid-almalinux9:latest
-```
-
-Setup a recent LCG view and start aMC@NLO. This needs to be run at the start of every session.
-
-```shell
-export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
-source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh;
-lsetup "views LCG_105b x86_64-el9-gcc13-opt"
-```
-
-Start aMC@NLO and install the necessary tools.
+Standalone aMC@NLO works out of the box on the cluster computers. Start aMC@NLO and install the necessary tools.
 
 ```shell
 ./bin/mg5_aMC
 install pythia8
 install Delphes
-install ExRootAnalysis
 ```
-
 
 ## Example
 
