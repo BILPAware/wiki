@@ -8,7 +8,7 @@
 - [Measurement of the W boson mass at LHCb](https://arxiv.org/abs/2109.01113)
 
 ## FCCee (Future Electron Collider)
-- [The W mass and width measurement challenge at FCC-ee](https://arxiv.org/abs/2109.01113)
+- [The W mass and width measurement challenge at FCC-ee](https://arxiv.org/abs/2107.04444)
 
 ## Muon Collider (Future Muon Collider)
 - [Precision W -boson and top-quark mass determinations at a muon collider](https://arxiv.org/abs/hep-ph/9702334)

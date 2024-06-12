@@ -72,6 +72,7 @@ nav:
         - 'Our Projects':
             - 'W mass':
                 - 'References': projects/wmass/references.md
+                - 'Samples': projects/wmass/samples.md
     - '4D Tracking':
         - 'TDCPix':
             - 'CERN Test Setup': 4dtracking/tdcpix/cernsetup.md
