@@ -12,6 +12,7 @@ This is not a tutorial on using MadGraph5_aMC@NLO. Other excellent resources exi
 Standalone aMC@NLO works out of the box on the cluster computers. Start aMC@NLO and install the necessary tools.
 
 ```shell
+export ROOTSYS=/usr
 ./bin/mg5_aMC
 install pythia8
 install Delphes
