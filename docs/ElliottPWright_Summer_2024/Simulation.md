@@ -2,7 +2,9 @@
 
 ## Introduction:
 
-Included here is a TCAD tutorial using the Sentuarus Workbench (SWB) to simulate a series of increasingly sophisticated semiconductor sensors. Following this is an Allpix Squared tutorial, where a test beam of protons impinges on a telescope of 7, 224 x 512 pixel, monolithic sensors.
+Included here is a tutorial on how to set up the Sentuarus Workbench (SWB) environment using the UoB license. This software is used to simulate a semiconductor sensors and its associated electric field model. Following this is an basic Allpix Squared tutorial where the user learns how to examine sensor parameters through ROOT TBrowers.
+
+**NOTE: as of writing (August 2024), Sentaurus Device Editor 3D rendering not working. An update is required for this tutorial such that it includes how to use Sentaurus.**
 
 ## Preliminary Set-Up for SWB:
 
@@ -20,7 +22,7 @@ Copy the downloads to a directory where you have write permissions. In the insta
 
 `./installer -gui` .
 
-Side ID Number: **7789/disk/moose/general/TCAD/downloads**
+Side ID Number: **7789/disk/moose/general/TCAD/downloads**.
 
 Select the location of the product that you want to install under the "Source" window. For example,
 
@@ -44,13 +46,15 @@ Then open TCAD SWB:
 
 `./swb` .
 
-## Constructing an Initial SWB PN Junction:
+## Constructing an Initial SWB PN Junction (To be edited once SDE 3D rendering works):
 
 The TCAD Sentaurus Tutorial can be found at: <file:///scratch/synopsys/sentaurus/V-2024.03/tcad/V-2024.03/Sentaurus_Training/index.html>. I would recommend reading the first module up to Section 6 (Managing Projects) to gain an idea of how to use SWB. Pay particular attention to mentions of Device Simulation, as this what we will use to measure the simulated sensor's electrical properties.
 
 ## Preliminary Set-Up for Allpix:
 
-Allpix Squared will be used for the Monte Carlo simulation of charge carriers in the sensor modules. This software is based on Geant4 and contains functionality for visualisation. I mention this because such visualisation can be used as a sanity check that your simulation is doing what you want it to. Particularly problematic is when Allpix uses default values for specific parameters. The Allpix documentation can be found at: <https://allpix-squared.docs.cern.ch/docs/>, and contains examples of when default values are used. To open Allpix Squared, you must first move to the directory containing your Allpix configuration files (this can be your home directory). Then type the following command into the command line:
+Allpix Squared is used for the Monte Carlo simulation of charge carriers in semiconductor sensor modules. This software is based on Geant4 for charge propagation and contains functionality for visualisation. I mention this because such visualisation can be used as a sanity check that your simulation is doing what you want it to. Particularly problematic is when Allpix uses default values for specific parameters. Further to that, there are some instances where the simulation will continue to run with default values, for example, if you misspell a parameter. The Allpix documentation can be found at: <https://allpix-squared.docs.cern.ch/docs/>, and contains examples of when default values are used.
+
+To open Allpix Squared, you must first move to the directory containing your Allpix configuration files (this can be your home directory). Then type the following command into the command line:
 
 `alma9`
 
@@ -62,29 +66,39 @@ I would recommend starting by looking at the **example.conf** and **example_dete
 
 **example_detector.conf** gives an example of how to set up a detector's position and orientation. In this case, the type of detector is cmsp1, the design of which can be found at:
 
-`allpix-squared/models/cmsp1`
+`allpix-squared/models/cmsp1` .
 
-![](images/Example_Detector.png)
+Allpix Squared contains 18 different models in the models folder, ranging from the LHCb velopix detector to the ATLAS ITk. Each of these can be used as a standard, and can be edited to create a variant of a well established detector.
+
+![example_detector.conf file](images/Example_Detector.png)
+
+![cmps1 model detector configuration file](images/Screenshot%20from%202024-07-24%2011-51-19-01.png)
 
 **example.conf** describes how to initialise a simulation of 10000 events, each of which produces a 120GeV energy, 10$\mu$m thick pion beam. The pion beam is fired in the positive z-axis from position (33$\mu$m, 66$\mu$m, -500$\mu$m). For this set-up, visualisation is not included. This can be rectified by replacing the **[Ignore]** header with **[VisualizationGeant4]**. Also included is the ability to set a electron threshold for your **[DefaultDigitizer]** header. This can be used for noise suppression.
 
-![](images/Screenshot%20from%202024-07-10%2010-01-24.png)
+![example.conf file](images/Screenshot%20from%202024-07-10%2010-01-24.png)
 
 To start a full simulation, cd into the directory containing the relevant .conf file. To run the file, e.g. to run **example.conf**, type:
 
 `allpix -c example.conf` .
 
-Once this has run, now look for the output folder in the same directory as \<file.conf\>. If this is present, you can examine the files in the ROOT Object Browser using:
+Once this has run, now look for the output folder in the same directory as \<file.conf\>. Of course, this can be set by adding
+
+`file_name = /path/to/desired/output`
+
+in the **[ROOTObjectWriter]** header. If your output file is present, you can examine the files in the ROOT Object Browser using:
 
 `root`
 
 `new TBrowser`
 
+in your terminal.
+
 ![New TBrowser Menu](images/Screenshot%20from%202024-07-16%2014-37-38.png)
 
-Then navigate to the examples folder. You have now demonstrated Allpix Squared functionality. With this in mind, we can now move on to building our own sensor based on the Allpide model. To look at something like the pixel hitmap, navigative to **modules.root/DetectorHistogrammer/\<detector_number\>/hit_map**. The figure below demonstrates how this should look.
+Then navigate to the output folder. You have now demonstrated Allpix Squared functionality. With this in mind, you can now move on to building your own sensor based on the of your choosing model. To look at something like the pixel hitmap i.e. which pixels are hit and how many times they are hit, navigative to **\<output_file.root\>/DetectorHistogrammer/\<detector_number\>/hit_map**. The figure below demonstrates how this should look.
 
-![](images/Screenshot from 2024-07-23 16-44-04.png)
+![Demonstration of ROOT Browser showing a pixel hitmap](images/Screenshot%20from%202024-07-23%2016-44-04.png)
 
 ## Constructing a Sensor Test Beam Simulation:
 
@@ -126,9 +140,9 @@ Now create a detector configuration file, specifying the **alpide** as the detec
 
 The main simulation configuration file for this simulation is adapted from **example.conf**, which can be found here
 
-`./allpix-squared/examples`
+`./allpix-squared/examples`.
 
-. You will then need to add the following line in the main simulation configuration file **[Allpix]** header:
+You will then need to add the following line in the main simulation configuration file **[Allpix]** header:
 
 `model_paths = "./allpix-squared/<detector_files>/"`
 
@@ -142,42 +156,8 @@ To look for histogram data, go to PixelHit/\<detector\>/pixel/local_center\_/X()
 
 ![Allpix-Squared Simulation Visualisation](images/Screenshot%20from%202024-07-16%2016-54-29.png)
 
-UNEDITED BELOW:
+For the MALTA2 telescope, a linear electric field is used. To get plots like the one below to show **output_plots = true** must be applied in **[ElectricFieldReader]**. You must the go via the following path in the ROOT Browser:
 
-Sentaurus Process can be used for fabrication, while Sentaurus Structure Editor uses pre-def
+`<output_file.root>/ElectricFieldReader/field_magnitude` .
 
-alma9
-
-source /cvmfs/clicdp.cern.ch/software/allpix-squared/3.1.0/x86_64-el9-gcc12-opt/setup.sh
-
-ined geometries. After a structure is generated, we can create a device to measure the electrical properties. To extract values from the simulation, the simulation flow must end with a Sentaurus Visual.
-
-NOTE: Sentaurus Workbench (SWB) comes with pre-prepared projects.
-
-Sentaurus Interconnect potential usage for multiple connected components
-
-Sentaurus Project tab organised from top to bottom as: Total Flow (SPROCESS, SDEVICE, SVISUAL), Project Parameters, Simulation Tree.
-
-Nodes in the Simulation Tree contain data.
-
-SWB projects can be organised in two ways: \* Hierarchical: core project files, and simulation results are separated \* Traditional: all project data is placed in one directory
-
-Parallel processing will be required if a 3D simulation is constructed.
-
-Decided to move on from Sentaurus Workbench tutorial after Section 6. Now working on to Sentaurus Structure Editor module.Can return to previous module for advice on Sentaurus preferences.
-
-To start Sentaurus Structure Editor on the command line, type: ./sde (same as for ./swb).
-
-To start Sentaurus Visual, type: ./svisual. Could use the Plot Overlay function in Sentaurus Visual to compare the behaviour of the simple PN junction to the rudimentary sensor module.
-
-Sentaurus Visual command prompts can be written in tool command language (TCL) and/or python. A tutorial for this is included in the main Sentaurus tutorial. For the purposes of debugging, a knowledge of TCL basics is recommended.
-
-NOTE: Allpix Squared also provides the possibility to utilize a full electrostatic TCAD simulation for the description of the electric field.
-
-Root tutorial found at: <https://root.cern.ch/root/htmldoc/guides/users-guide/Trees.html>
-
-NEW WAY TO GET INTO ALLPIX:
-
-`apptainer shell [docker://gitlab-registry.cern.ch/allpix-squared/allpix-squared](docker://gitlab-registry.cern.ch/allpix-squared/allpix-squared)`
-
-`apptainer shell /cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/allpix-squared/allpix-squared:latest/` .
+![Demonstration of linear electric field for a bias voltage of -15V](images/Screenshot%20from%202024-07-24%2011-22-49.png)
