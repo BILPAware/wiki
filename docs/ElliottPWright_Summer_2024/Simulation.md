@@ -60,11 +60,13 @@ To open Allpix Squared, you must first move to the directory containing your All
 
 `source /cvmfs/clicdp.cern.ch/software/allpix-squared/3.1.0/x86_64-el9-gcc12-opt/setup.sh`
 
+## The Configuration Files
+
 I would recommend starting by looking at the **example.conf** and **example_detector.conf** configuration files given in:
 
 `allpix-squared/examples/` .
 
-**example_detector.conf** gives an example of how to set up a detector's position and orientation. In this case, the type of detector is cmsp1, the design of which can be found at:
+These files should be included when you initially install Allpix. **example_detector.conf** gives an example of how to set up a detector's position and orientation. In this case, the type of detector is cmsp1, the design of which can be found at:
 
 `allpix-squared/models/cmsp1` .
 
@@ -72,11 +74,23 @@ Allpix Squared contains 18 different models in the models folder, ranging from t
 
 ![example_detector.conf file](images/Example_Detector.png)
 
-![cmps1 model detector configuration file](images/Screenshot%20from%202024-07-24%2011-51-19-01.png)
-
-**example.conf** describes how to initialise a simulation of 10000 events, each of which produces a 120GeV energy, 10$\mu$m thick pion beam. The pion beam is fired in the positive z-axis from position (33$\mu$m, 66$\mu$m, -500$\mu$m). For this set-up, visualisation is not included. This can be rectified by replacing the **[Ignore]** header with **[VisualizationGeant4]**. Also included is the ability to set a electron threshold for your **[DefaultDigitizer]** header. This can be used for noise suppression.
+![cmps1.conf model detector configuration file](images/Screenshot%20from%202024-07-24%2011-51-19-01.png)
 
 ![example.conf file](images/Screenshot%20from%202024-07-10%2010-01-24.png)
+
+In **example_detector.conf** you can set the type, position, and orientation of any number of detectors. **cmps1.conf** allows you to decide whether a detector is hybrid or monolithic, pixel or strip. You can also add, in the case of hybrid, the bump-bond and the ASIC geometry. **example.conf** describes how to initialise a simulation of 10000 events, each of which produces a 120GeV energy, 10$\mu$m thick pion beam. The pion beam is fired in the positive z-axis from position (33$\mu$m, 66$\mu$m, -500$\mu$m). For this set-up, visualisation is not included. This can be rectified by replacing the **[Ignore]** header with **[VisualizationGeant4]**. Also included is the ability to set a electron threshold for your **[DefaultDigitizer]** header. This can be used for noise suppression.
+
+## Starting a Simulation
+
+You will then need to add the following line in the main simulation configuration file **[Allpix]** header:
+
+`model_paths = "./allpix-squared/<detector_files>/"`
+
+where \<detector_files\> is the directory where allpide is stored. This allows Allpix to know where you want it to check for pre-defined detectors. Before running your full simulation .config file, the following line must be added in the **[ROOTObjectWriter]** header:
+
+`file_name = "./allpix-squared/<Output_File_Name.root>"`
+
+This specifies where you want your output data to be stored. Finally, you'll need to add a **[DetectorHistogrammer]** header for the fourth detector.
 
 To start a full simulation, cd into the directory containing the relevant .conf file. To run the file, e.g. to run **example.conf**, type:
 
@@ -96,68 +110,46 @@ in your terminal.
 
 ![New TBrowser Menu](images/Screenshot%20from%202024-07-16%2014-37-38.png)
 
-Then navigate to the output folder. You have now demonstrated Allpix Squared functionality. With this in mind, you can now move on to building your own sensor based on the of your choosing model. To look at something like the pixel hitmap i.e. which pixels are hit and how many times they are hit, navigative to **\<output_file.root\>/DetectorHistogrammer/\<detector_number\>/hit_map**. The figure below demonstrates how this should look.
+Then navigate to the output folder. You have now demonstrated Allpix Squared functionality. With this in mind, you can now move on to building your own sensor based on the of your choosing model. To look at something like the pixel hitmap i.e. which pixels are hit and how many times they are hit, navigative to
+
+`<output_file.root>/DetectorHistogrammer/<detector_number>/hit_map`.
+
+The figure below demonstrates how this should look.
 
 ![Demonstration of ROOT Browser showing a pixel hitmap](images/Screenshot%20from%202024-07-23%2016-44-04.png)
 
-## Constructing a Sensor Test Beam Simulation:
+## Looking at Allpix Visualisation
 
-To begin with, we take the Allpide model from the featured Allpix models and change the relevant parameters to match those in the table below.
-
-| Parameter        | Value                     |
-|------------------|---------------------------|
-| Sensor Dimension | 20.2 mm x 10.1168 mm      |
-| Pixel Pitch      | 36.4 $\mu$m x 36.4 $\mu$m |
-| Pixel Matrix     | 512 x 224                 |
-| Sensor Thickness | 100 $\mu$m                |
-| Sensor Excess    | 0.7816 mm x 0.9812 mm     |
-
-: Table of sensor parameters
-
-Now create a detector configuration file, specifying the **alpide** as the detector type, and arranging the 7 detectors/sensors as per the table below.
-
-| Z-axis position (mm) |
-|----------------------|
-| 0                    |
-| 80                   |
-| 160                  |
-| 550                  |
-| 940                  |
-| 1020                 |
-| 1100                 |
-
-: Sensor z-axis positions
-
-| Parameter              | Value   |
-|------------------------|---------|
-| Particle               | proton  |
-| Energy                 | 180GeV  |
-| Temperature            | 258.15K |
-| Depletion Voltage      | -30V    |
-| Digitisation Threshold | 260e    |
-
-: Simulation operational parameters
-
-The main simulation configuration file for this simulation is adapted from **example.conf**, which can be found here
-
-`./allpix-squared/examples`.
-
-You will then need to add the following line in the main simulation configuration file **[Allpix]** header:
-
-`model_paths = "./allpix-squared/<detector_files>/"`
-
-where \<detector_files\> is the directory where allpide is stored. This allows Allpix to know where you want it to check for pre-defined detectors. Before running your full simulation .config file, the following line must be added in the **[ROOTObjectWriter]** header:
-
-`file_name = "./allpix-squared/<Output_File_Name.root>"`
-
-This specifies where you want your output data to be stored. Finally, you'll need to add a **[DetectorHistogrammer]** header for the fourth detector. Now run your main simulation configuration file. Once this has completed, open a new TBrowser. Your screen should look like this:
-
-To look for histogram data, go to PixelHit/\<detector\>/pixel/local_center\_/X(). This should demonstrate to you that the simulation was successful as it shows you the pixel hits in the X-axis. (The same logic can be applied to the Y- and Z-axis.) To look at clustering data
+If you look at the **[Ignore]** header and swap **[Ignore]** with **[VisualizationGeant4]**, then when you finish running a simulation, it will output the figure below (obviously with your detector geometry, not mine).
 
 ![Allpix-Squared Simulation Visualisation](images/Screenshot%20from%202024-07-16%2016-54-29.png)
 
+## Looking at Clustering Data:
+
+To look for cluster histogram data, go to
+
+`<output_file.root>/DetectorHistogrammer/<detector_number>/cluster_size/cluster_size_x`.
+
+![x-axis clustering data example](images/Screenshot from 2024-08-23 16-58-21.png)
+
+This should demonstrate to you that the simulation was successful as it shows you the clusters in the X-axis. (The same logic can be applied to the Y- axis.)
+
+## Looking at the Electric Field
+
 For the MALTA2 telescope, a linear electric field is used. To get plots like the one below to show **output_plots = true** must be applied in **[ElectricFieldReader]**. You must the go via the following path in the ROOT Browser:
 
-`<output_file.root>/ElectricFieldReader/field_magnitude` .
+`<output_file.root>/ElectricFieldReader/<detector_number>/field_magnitude` .
 
 ![Demonstration of linear electric field for a bias voltage of -15V](images/Screenshot%20from%202024-07-24%2011-22-49.png)
+
+## Looking at Lineplots
+
+To have lineplots in you TBrowser, you must have the following line in the **[GenericPropagation]** header:
+
+`output_lineplots = true` .
+
+In the TBrowser the lineplot can be found at:
+
+`<output_file.root>/GenericPropagation/<detector_number>/line_plot_1_all`
+
+![Lineplot for detector with V_b = -15V, V_depl = -30V at 45 degrees incline](images/3D_15V_45deg_woTelescope.png)
